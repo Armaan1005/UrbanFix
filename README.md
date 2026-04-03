@@ -140,8 +140,6 @@ UrbanFix/
 ## Demo Screenshots
 
 <p align="center">
-  <img src="screenshots/Screenshot 2026-04-03 192210.png" width="220">
-  <img src="screenshots/Screenshot 2026-04-03 192317.png" width="220">
   <img src="screenshots/Screenshot_20260403_192824.png" width="220">
   <img src="screenshots/Screenshot_20260403_192843.png" width="220">
   <img src="screenshots/Screenshot_20260403_192852.png" width="220">
@@ -149,7 +147,12 @@ UrbanFix/
   <img src="screenshots/Screenshot_20260403_192939.png" width="220">
   <img src="screenshots/Screenshot_20260403_193047.png" width="220">
   <img src="screenshots/Screenshot_20260403_193101.png" width="220">
-  <img src="screenshots/agent_dashboard.png" width="220">
+</p>
+
+<p align="center">
+  <img src="screenshots/agent_dashboard.png" width="600">
+  <img src="screenshots/Screenshot 2026-04-03 192210.png" width="500">
+  <img src="screenshots/Screenshot 2026-04-03 192317.png" width="500">
 </p>
 
 ## Database Schema
