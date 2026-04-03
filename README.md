@@ -46,7 +46,6 @@ Before running the app, make sure you have:
 
 - [Flutter SDK](https://docs.flutter.dev/get-started/install) (3.41+)
 - A [Supabase](https://supabase.com) account (free tier works)
-- (Optional) A [Google Maps API key](https://developers.google.com/maps/documentation/android-sdk/get-api-key)
 
 ## Setup Instructions
 
@@ -82,23 +81,8 @@ class SupabaseConfig {
 }
 ```
 
-### Step 5: (Optional) Configure Google Maps
 
-**Android:** Edit `android/app/src/main/AndroidManifest.xml` and add inside `<application>`:
-
-```xml
-<meta-data
-    android:name="com.google.android.geo.API_KEY"
-    android:value="YOUR_GOOGLE_MAPS_API_KEY"/>
-```
-
-**iOS:** Edit `ios/Runner/AppDelegate.swift` and add:
-
-```swift
-GMSServices.provideAPIKey("YOUR_GOOGLE_MAPS_API_KEY")
-```
-
-### Step 6: Run the App
+### Step 5: Run the App
 
 ```bash
 # Check everything is ready
@@ -152,6 +136,21 @@ UrbanFix/
 ├── pubspec.yaml                   # Flutter dependencies
 └── README.md
 ```
+
+## Demo Screenshots
+
+<p align="center">
+  <img src="screenshots/Screenshot 2026-04-03 192210.png" width="220">
+  <img src="screenshots/Screenshot 2026-04-03 192317.png" width="220">
+  <img src="screenshots/Screenshot_20260403_192824.png" width="220">
+  <img src="screenshots/Screenshot_20260403_192843.png" width="220">
+  <img src="screenshots/Screenshot_20260403_192852.png" width="220">
+  <img src="screenshots/Screenshot_20260403_192859.png" width="220">
+  <img src="screenshots/Screenshot_20260403_192939.png" width="220">
+  <img src="screenshots/Screenshot_20260403_193047.png" width="220">
+  <img src="screenshots/Screenshot_20260403_193101.png" width="220">
+  <img src="screenshots/agent_dashboard.png" width="220">
+</p>
 
 ## Database Schema
 
