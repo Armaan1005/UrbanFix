@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+    <h1>Testing Supabase Connection</h1>
+    <div id="status">Checking...</div>
+    <div id="results"></div>
+
+    <script>
+        const SUPABASE_URL = 'https://zcyuihxaabdahloljmve.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjeXVpaHhhYWJkYWhsb2xqbXZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjUzODQ1MjcsImV4cCI6MjA4MDk2MDUyN30.m7X16L9SlXFHtXXrD8pGN8SsINpYn28fmg30ReX4rc4';
+
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        async function test() {
+            const statusDiv = document.getElementById('status');
+            const resultsDiv = document.getElementById('results');
+
+            try {
+                statusDiv.innerHTML = '✅ Supabase client created';
+
+                const { data, error, count } = await supabase
+                    .from('reports')
+                    .select('*', { count: 'exact' });
+
+                if (error) {
+                    statusDiv.innerHTML = '❌ Error: ' + error.message;
+                    resultsDiv.innerHTML = '<pre>' + JSON.stringify(error, null, 2) + '</pre>';
+                } else {
+                    statusDiv.innerHTML = `✅ Success! Found ${data.length} reports`;
+                    resultsDiv.innerHTML = '<h3>Reports:</h3><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+                }
+            } catch (err) {
+                statusDiv.innerHTML = '❌ Exception: ' + err.message;
+                resultsDiv.innerHTML = '<pre>' + err.stack + '</pre>';
+            }
+        }
+
+        test();
+    </script>
+</body>
+
+</html>

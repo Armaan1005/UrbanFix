@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanFix - Agency Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="logo">🏙️ UrbanFix Agency</h1>
+                <div class="header-actions">
+                    <button class="btn-refresh" onclick="refreshData()">
+                        <span class="refresh-icon">🔄</span> Refresh
+                    </button>
+                    <div class="user-info">
+                        <span class="user-name">Admin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Analytics Cards -->
+            <section class="analytics-section">
+                <h2 class="section-title">Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card stat-active">
+                        <div class="stat-icon">🔴</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Active Reports</div>
+                            <div class="stat-value" id="activeCount">0</div>
+                            <div class="stat-subtitle">Reported + In Progress</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-pending">
+                        <div class="stat-icon">🟠</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Pending Review</div>
+                            <div class="stat-value" id="pendingCount">0</div>
+                            <div class="stat-subtitle">Awaiting acknowledgment</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-resolved">
+                        <div class="stat-icon">🟢</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Resolved</div>
+                            <div class="stat-value" id="resolvedCount">0</div>
+                            <div class="stat-subtitle">This month</div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card stat-total">
+                        <div class="stat-icon">📊</div>
+                        <div class="stat-info">
+                            <div class="stat-label">Total Reports</div>
+                            <div class="stat-value" id="totalCount">0</div>
+                            <div class="stat-subtitle">All time</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-section">
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3 class="chart-title">Reports by Category</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3 class="chart-title">Status Distribution</h3>
+                        <canvas id="statusChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reports Table -->
+            <section class="reports-section">
+                <div class="section-header">
+                    <h2 class="section-title">Reports Management</h2>
+                    <div class="filters">
+                        <select id="statusFilter" class="filter-select" onchange="filterReports()">
+                            <option value="all">All Status</option>
+                            <option value="reported">Reported</option>
+                            <option value="acknowledged">Acknowledged</option>
+                            <option value="in_progress">In Progress</option>
+                            <option value="resolved">Resolved</option>
+                        </select>
+                        <select id="categoryFilter" class="filter-select" onchange="filterReports()">
+                            <option value="all">All Categories</option>
+                            <option value="pothole">Pothole</option>
+                            <option value="garbage">Garbage</option>
+                            <option value="streetlight">Streetlight</option>
+                            <option value="water leakage">Water Leakage</option>
+                            <option value="road damage">Road Damage</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <input type="text" id="searchInput" class="search-input" placeholder="Search by ID or location..." oninput="filterReports()">
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="reports-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Category</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Upvotes</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reportsTableBody">
+                            <tr>
+                                <td colspan="7" class="loading-cell">Loading reports...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Report Details Modal -->
+    <div id="reportModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Report Details</h2>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Content loaded dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <script src="js/supabase.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
