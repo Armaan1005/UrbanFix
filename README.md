@@ -13,10 +13,11 @@ A Flutter mobile application for reporting and tracking civic issues with photo 
 
 ## Team Members
 
-1. **Mohammed Armaan Patel** - Backend & API Developer
-2. **Prashant Choudhary** - Frontend UI/UX Developer
-3. **Meganath Saravanan** - Maps & Location Developer
-4. **Ramyapriya Sivasankar** - Reports & Integration Developer
+1. Mohammed Armaan Patel — Mobile App Developer
+2. Ramyapriya Sivasankar — Backend Developer
+3. Prashant Choudhary — Flutter UI Developer
+4. Meganath Saravanan — Authentication Developer
+
 
 ## Tech Stack
 
